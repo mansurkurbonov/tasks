@@ -39,9 +39,9 @@
                 <tr>
                     <th>#</th>
                     <th>ФИО</th>
+                    <th>email</th>
                     <th>Задача</th>
                     <th>Статус</th>
-                    <th>#</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -50,6 +50,7 @@
                     <tr>
                         <td> <?= $task->id; ?></td>
                         <td> <?= $task->user_name; ?> </td>
+                        <td> <?= $task->email; ?> </td>
                         <td> <?= $task->body; ?> </td>
                         <td> <?php if ($task->is_completed == 1): ?>
                             <form method="POST" action="/tasks/update/<?= $task->id ?>">

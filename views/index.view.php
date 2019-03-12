@@ -41,12 +41,21 @@
                 <input type="text" class="form-control" name="user_name" id="exampleFormControlInput1" placeholder="Пользователь">
             </div>
         </div>
+
+        <div class="col-md-2">
+            <div class="form-group">
+                <label for="exampleFormControlInput1">email</label>
+                <input type="email" class="form-control" name="email" id="exampleFormControlInput1" placeholder="email">
+            </div>
+        </div>
+
         <div class="col-md-2">
             <div class="form-group">
                 <label for="exampleFormControlInput1">Название задачи</label>
                 <input type="text" class="form-control" name="body" id="exampleFormControlInput1" placeholder="Название задачи">
             </div>
         </div>
+
         <div class="col-md-1">
             <br>
             <button class="btn btn-success" type="submit"> Добавить </button>
@@ -61,6 +70,7 @@
                 <tr>
                     <th>#</th>
                     <th>ФИО</th>
+                    <th>email</th>
                     <th>Задача</th>
                     <th>Статус</th>
                 </tr>
@@ -71,6 +81,7 @@
                     <tr>
                         <td> <?= $task->id; ?></td>
                         <td> <?= $task->user_name; ?> </td>
+                        <td> <?= $task->email; ?> </td>
                         <td> <?= $task->body; ?> </td>
                         <td> <?php if ($task->is_completed == 1):
                                 echo "Решена";

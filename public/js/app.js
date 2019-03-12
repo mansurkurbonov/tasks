@@ -10,7 +10,7 @@ $(document).ready(function() {
         // },
         "language": {
             "sProcessing": "Подождите...",   "sLengthMenu": "Показать _MENU_ записей",
-            "sZeroRecords": "Записи отсутствуют.",  "sInfo": "Записи с _START_ до _END_ из _TOTAL_ записей",
+            "sZeroRecords": "Записи отсутствуют.",  "sInfo": "",
             //"sZeroRecords": "Записи с 0 до 0 из 0 записей",  "sInfoFiltered": "",
             "sInfoPostFix": "",  "sSearch": "Поиск:",   "sUrl": "",
             "oPaginate": { "sFirst": "Первая", "sPrevious": "Предыдущая", "sNext": "Следующая",  "sLast": "Последняя"

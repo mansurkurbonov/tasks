@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Core\App;
+use App\Core\Validate;
 use App\Models\Task;
 use Exception;
 
@@ -25,17 +26,32 @@ class TaskController
         $nextPage = $currentPage + 1;
         $previousPage = $currentPage - 1;
 
-        return view('index',compact('tasks', 'endPage', 'startPage', 'nextPage', 'previousPage', 'currentPage'));
+        return view('index',compact('tasks', 'endPage', 'startPage', 'nextPage', 'previousPage', 'currentPage', 'count'));
     }
 
     /**
-     * --
+     * @return string|void
      */
     public function store()
     {
+        $userName = $_POST['user_name'];
+        $body = $_POST['body'];
+        $email = $_POST['email'];
+        if ( $userName == "" || $email == "" ||  $body == "") {
+            echo "не все поля введены :)";
+            return "";
+        }
+
+        try {
+            Validate::validate($email, "email");
+        } catch (Exception $exception) {
+            echo "email не валидный";
+            return "";
+        }
         Task::create([
-            'user_name' => $_POST['user_name'],
-            'body'  => $_POST['body']
+            'user_name' => $userName,
+            'body'      => $body,
+            'email'     => $email
         ]);
 
         return redirect('');

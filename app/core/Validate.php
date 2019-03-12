@@ -2,18 +2,19 @@
 
 namespace App\Core;
 
+use Exception;
+
 class Validate
 {
     /**
      * @param $data
      * @param $type
-     * @return string
+     * @throws Exception
      */
     public static function validate($data, $type)
     {
-        $error = "";
         if (empty($data)) {
-            $error = "Field is required";
+            throw new Exception("поле не введено");
         }
 
         $data = trim($data);
@@ -22,19 +23,18 @@ class Validate
 
         if ($type == "text") {
             if (!preg_match("/^[a-zA-Z0-9.-_ ]*$/",$data)) {
-                $error = "Only latin letters and white space allowed";
+                throw new Exception("допустимы только латинские буквы");
             }
 
         } else if ($type == "email") {
             if (!filter_var($data, FILTER_VALIDATE_EMAIL)) {
-                $error = "Invalid email format";
+                throw new Exception("некорректный формат email");
             }
 
         } else if ($type == "phone") {
             if (!preg_match("/^\(?\+?([0-9]{1,4})\)?[-\. ]?(\d{10})$/",$data)) {
-                $error = "Please enter a valid phone number";
+                throw new Exception("некорректный формат phone");
             }
         }
-        return $error;
     }
 }

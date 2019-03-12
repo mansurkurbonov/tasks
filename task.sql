@@ -27,3 +27,5 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`full_name`, `login`, `password`) VALUES
 ('Steven Gerrard', 'admin', '123');
+
+ALTER TABLE tasks ADD COLUMN email VARCHAR(50) DEFAULT '';
